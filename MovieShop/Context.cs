@@ -14,7 +14,7 @@ namespace DatabaseConnection
             optionsBuilder
                 .UseLazyLoadingProxies()
                 .UseSqlServer(
-                @"server=.\SQLExpress;" +
+                @"server=.;" +
                 @"database=SaleDatabase;" +
                 @"trusted_connection=true;" +
                 @"MultipleActiveResultSets=True"
