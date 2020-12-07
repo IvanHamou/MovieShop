@@ -1,0 +1,25 @@
+﻿<Window x:Class="Store.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Store"
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="450" Width="800">
+    <Grid RenderTransformOrigin="0.499,0.502" Background="Black">
+        <Label Content="MOVIE SHOP" HorizontalAlignment="Center" Margin="0,43,0,0" VerticalAlignment="Top" Foreground="White" FontSize="72" FontFamily="Britannic Bold"/>
+        <!-- 
+            En TextBox för att hämta in ett användarnamn från användaren. 
+            Ger objektinstansen ett namn för att komma åt det inne i C# koden.
+        -->
+        <TextBox Name="NameField" HorizontalAlignment="Center" Margin="0,184,0,0" Text="Username" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Visible"/>
+        <!-- 
+            En Button att klicka på när man vill logga in.
+            Click-eventet är kopplat till LogIn_Click metoden 
+            som finns definierad inne i 'LoginWindow.xaml.cs'
+        -->
+        <Button Click="LogIn_Click" Content="Log In" HorizontalAlignment="Center" Margin="0,246,0,0" VerticalAlignment="Top"/>
+
+
+    </Grid>
+</Window>
