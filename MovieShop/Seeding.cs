@@ -24,7 +24,7 @@ namespace DatabaseConnection
 
 
                 var movies = new List<Movie>();
-                var lines = File.ReadAllLines(@"..\..\..\SeedData\Movies.csv");
+                var lines = File.ReadAllLines(@"..\..\..\AvailableMovies\Movies.csv");
                 for (int i = 1; i < 200; i++)
                 {
                     var cells = lines[i].Split(',');
