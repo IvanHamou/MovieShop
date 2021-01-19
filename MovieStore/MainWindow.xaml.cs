@@ -16,7 +16,7 @@ using DatabaseConnection;
 
 namespace MovieStore
 {
-   
+
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -29,19 +29,19 @@ namespace MovieStore
 
             int column_count = MovieGrid.ColumnDefinitions.Count;
 
-           
+
             int row_count = (int)Math.Ceiling((double)State.Movies.Count / (double)column_count);
 
             for (int y = 0; y < row_count; y++)
             {
-                
+
                 MovieGrid.RowDefinitions.Add(
                     new RowDefinition()
                     {
                         Height = new GridLength(140, GridUnitType.Pixel)
                     });
 
-               
+
                 for (int x = 0; x < column_count; x++)
                 {
                     int i = y * column_count + x;
@@ -52,7 +52,7 @@ namespace MovieStore
 
                         var image = new Image()
                         {
-                            Cursor = Cursors.Hand, 
+                            Cursor = Cursors.Hand,
                             HorizontalAlignment = HorizontalAlignment.Center,
                             VerticalAlignment = VerticalAlignment.Center,
                             Margin = new Thickness(4, 4, 4, 4),
@@ -61,7 +61,7 @@ namespace MovieStore
 
                         try
                         {
-                            image.Source = new BitmapImage(new Uri(movie.ImageURL)); 
+                            image.Source = new BitmapImage(new Uri(movie.ImageURL));
                         }
                         catch (Exception e) when
                             (e is ArgumentNullException ||
@@ -88,10 +88,24 @@ namespace MovieStore
             int i = y * MovieGrid.ColumnDefinitions.Count + x;
             State.Pick = State.Movies[i];
 
-            if (DatabaseAPI.RegisterSale(State.User, State.Pick))
-                MessageBox.Show("Movie succesfully downloaded!", "Sale Succeeded!", MessageBoxButton.OK, MessageBoxImage.Information);
-            else
-                MessageBox.Show("Movie failed to download.", "Sale Failed!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to download this movie?", "Download", MessageBoxButton.YesNo, MessageBoxImage.Information);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    MessageBox.Show("Movie succesfully downloaded!", "Download");
+                    break;
+                case MessageBoxResult.No:
+                    MessageBox.Show("No problem, there are other movies to choose from!", "Download");
+                    break;
+                
+            }
+
+
+
         }
-    }
+        
+        
+     
+
+}
 }
